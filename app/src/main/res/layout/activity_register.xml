@@ -5,22 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background_design"
-    tools:context=".LoginActivity">
+    tools:context=".RegisterActivity">
+
     <TextView
-        android:id="@+id/loginTitle"
+        android:id="@+id/registerTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="50dp"
         android:textColor="#000"
         android:fontFamily="@font/syne_regular"
-        android:layout_marginVertical="60dp"
+        android:layout_marginVertical="70dp"
         android:layout_marginHorizontal="10dp"
         android:textAlignment="center"
         />
 
     <EditText
-        android:id="@+id/loginUsername"
+        android:id="@+id/registerUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Votre prénom..."
@@ -30,11 +30,11 @@
         android:inputType="textEmailAddress"
         android:background="@drawable/inputs"
         android:fontFamily="@font/interregular"
-        android:drawableStart="@drawable/ic_account"
         android:drawablePadding="10dp"
+        android:drawableStart="@drawable/ic_account"
         android:padding="10dp"/>
     <EditText
-        android:id="@+id/loginPassword"
+        android:id="@+id/registerPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Votre mot de passe..."
@@ -47,28 +47,27 @@
         android:drawableStart="@drawable/ic_lock"
         android:drawablePadding="10dp"
         android:padding="10dp"/>
-    
+
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Se connecter"
+        android:text="Créer mon compte"
         android:layout_margin="15dp"
         android:textColor="#000"
         android:fontFamily="@font/syne_regular"
         android:background="#DDF42D"
         />
-    
+
     <TextView
-        android:id="@+id/loginPageQuestion"
+        android:id="@+id/registerQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pas encore de compte ? S’enregistrer"
+        android:text="Déjà inscrit ? Se connecter"
         android:textColor="#606060"
         android:layout_gravity="center"
         android:layout_margin="15dp"
         android:fontFamily="@font/syne_regular"
         />
-
 
 </LinearLayout>

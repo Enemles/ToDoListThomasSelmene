@@ -20,8 +20,6 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private long backPressedTime;
-
     private static final int SPLASH = 3300;
 
     Animation topAnim, bottomAnim;
@@ -50,14 +48,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-    if(backPressedTime + 2000 > System.currentTimeMillis()){
-            super.onBackPressed();
-            return;
-        }else{
-            Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
-        }
-        backPressedTime = System.currentTimeMillis();
-    }
 }
