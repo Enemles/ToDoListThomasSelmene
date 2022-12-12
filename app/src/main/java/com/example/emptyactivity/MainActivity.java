@@ -20,7 +20,7 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int SPLASH = 3300;
+    private static final int TIME = 3300;
 
     Animation topAnim, bottomAnim;
     GifImageView imageView;
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        }, SPLASH);
+        }, TIME);
 
 
     }
