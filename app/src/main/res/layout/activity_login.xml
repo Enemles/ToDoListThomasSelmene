@@ -7,6 +7,18 @@
     android:orientation="vertical"
     android:background="@drawable/background_design"
     tools:context=".LoginActivity">
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:max="100"
+        android:backgroundTint="@color/white"
+        android:layout_below="@+id/framelauout"
+        android:indeterminateTint="#1a09d6"
+        android:layout_marginTop="-7dp"/>
     <TextView
         android:id="@+id/loginTitle"
         android:layout_width="match_parent"
@@ -20,10 +32,10 @@
         />
 
     <EditText
-        android:id="@+id/loginUsername"
+        android:id="@+id/loginEmail"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:hint="Votre prénom..."
+        android:hint="Votre adresse mail..."
         android:layout_marginHorizontal="25dp"
         android:layout_marginVertical="15dp"
         android:textColor="#606060"
