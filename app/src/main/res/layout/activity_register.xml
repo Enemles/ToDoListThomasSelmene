@@ -44,7 +44,7 @@
         android:background="@drawable/inputs"
         android:fontFamily="@font/interregular"
         android:drawablePadding="10dp"
-        android:drawableStart="@drawable/ic_account"
+        android:drawableStart="@drawable/ic_mail"
         android:padding="10dp"/>
     <EditText
         android:id="@+id/registerUsername"
