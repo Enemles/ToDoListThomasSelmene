@@ -64,7 +64,7 @@
         />
 
     <TextView
-        android:id="@+id/registerQuestion"
+        android:id="@+id/registerLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Déjà inscrit ? Se connecter"
