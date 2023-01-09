@@ -38,6 +38,9 @@ public class RegisterActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_register);
 
+        TextView span = findViewById(R.id.registerLogin);
+        String test = "Ceci est un test";
+
         TextView textView = findViewById(R.id.registerTitle);
         int unicode = 0x1F609;
         String emoji = getEmoji(unicode);
@@ -69,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String pwd = registerPwd.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
-                    registerEmail.setError("Le nom d'utilisateur est requis");
+                    registerEmail.setError("L'adresse mail est requise est requis");
                     return;
                 }
                 if (TextUtils.isEmpty(pwd)) {
@@ -88,7 +91,6 @@ public class RegisterActivity extends AppCompatActivity {
                                 startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
                                 finish();
                                 progressBar.setVisibility(View.INVISIBLE);
-                            } else {
                                 Toast.makeText(RegisterActivity.this, "Erreur !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.INVISIBLE);
                             }

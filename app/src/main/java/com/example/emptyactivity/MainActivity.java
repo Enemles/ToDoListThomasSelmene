@@ -20,7 +20,7 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int TIME = 3300;
+    private static final int TIME = 1800;
 
     Animation topAnim, bottomAnim;
     GifImageView imageView;
