@@ -39,9 +39,9 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         TextView textView = findViewById(R.id.registerTitle);
-        int unicode = 0x1F601;
+        int unicode = 0x1F609;
         String emoji = getEmoji(unicode);
-        textView.setText("Créer un compte" + emoji);
+        textView.setText("Créer un compte " + emoji);
 
 
         ProgressBar progressBar = findViewById(R.id.progressbar);

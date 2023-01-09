@@ -31,9 +31,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         TextView textView = findViewById(R.id.loginTitle);
-        int unicode = 0x1F601;
+        int unicode = 0x1F600;
         String emoji = getEmoji(unicode);
-        textView.setText("Content de vous revoir" + emoji);
+        textView.setText("Content de vous revoir " + emoji);
 
         ProgressBar progressBar = findViewById(R.id.progressbar);
         progressBar.setVisibility(View.INVISIBLE);

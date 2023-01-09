@@ -35,56 +35,56 @@
         android:id="@+id/loginEmail"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:hint="Votre adresse mail..."
         android:layout_marginHorizontal="25dp"
-        android:layout_marginVertical="15dp"
-        android:textColor="#606060"
-        android:textColorHint="#606060"
-        android:inputType="textEmailAddress"
+        android:layout_marginVertical="10dp"
         android:background="@drawable/inputs"
-        android:fontFamily="@font/interregular"
         android:drawableStart="@drawable/ic_account"
         android:drawablePadding="10dp"
-        android:padding="10dp"/>
+        android:fontFamily="@font/interregular"
+        android:hint="Votre adresse mail..."
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:textColor="#606060"
+        android:textColorHint="#606060" />
+
     <EditText
         android:id="@+id/loginPassword"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:hint="Votre mot de passe..."
-        android:fontFamily="@font/interregular"
         android:layout_marginHorizontal="25dp"
-        android:layout_marginVertical="15dp"
-        android:textColor="#606060"
-        android:textColorHint="#606060"
-        android:inputType="textPassword"
+        android:layout_marginVertical="10dp"
         android:background="@drawable/inputs"
         android:drawableStart="@drawable/ic_lock"
         android:drawablePadding="10dp"
-        android:padding="10dp"/>
-    
+        android:fontFamily="@font/interregular"
+        android:hint="Votre mot de passe..."
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColor="#606060"
+        android:textColorHint="#606060" />
+
     <Button
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Se connecter"
         android:layout_marginHorizontal="25dp"
         android:layout_marginVertical="15dp"
-        android:textColor="#000"
-        android:fontFamily="@font/syne_regular"
         android:backgroundTint="#DDF42D"
-        android:textFontWeight="600"
-        />
-    
+        android:fontFamily="@font/syne_regular"
+        android:text="Se connecter"
+        android:textColor="#000"
+        android:textFontWeight="600" />
+
     <TextView
         android:id="@+id/loginRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pas encore de compte ? S’enregistrer"
-        android:textColor="#606060"
         android:layout_gravity="center"
         android:layout_marginHorizontal="25dp"
         android:layout_marginVertical="15dp"
         android:fontFamily="@font/syne_regular"
+        android:text="Pas encore de compte ? S’enregistrer"
+        android:textColor="#606060"
 
         />
 
