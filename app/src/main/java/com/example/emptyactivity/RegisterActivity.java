@@ -38,14 +38,10 @@ public class RegisterActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_register);
 
-        TextView span = findViewById(R.id.registerLogin);
-        String test = "Ceci est un test";
-
         TextView textView = findViewById(R.id.registerTitle);
         int unicode = 0x1F609;
         String emoji = getEmoji(unicode);
         textView.setText("Créer un compte " + emoji);
-
 
         ProgressBar progressBar = findViewById(R.id.progressbar);
         progressBar.setVisibility(View.INVISIBLE);
@@ -65,14 +61,20 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String email = registerEmail.getText().toString().trim();
                 String pwd = registerPwd.getText().toString().trim();
+                String user = registerUsername.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
-                    registerEmail.setError("L'adresse mail est requise est requis");
+                    registerEmail.setError("L'adresse mail est requise");
+                    return;
+                }
+                if (TextUtils.isEmpty(user)) {
+                    registerUsername.setError("Le nom d'utilisateur est requis");
                     return;
                 }
                 if (TextUtils.isEmpty(pwd)) {
