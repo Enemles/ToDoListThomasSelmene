@@ -5,9 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +17,7 @@ import com.example.emptyactivity.Adapter.ToDoAdapter;
 import com.example.emptyactivity.Model.ToDoModel;
 import com.example.emptyactivity.Utils.DatabaseHandler;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,6 +28,8 @@ public class HomeActivity extends AppCompatActivity implements DialogCloseListen
     private RecyclerView recyclerView;
     private ToDoAdapter tasksAdapter;
     private List<ToDoModel> taskList;
+
+    private ImageView logOut;
 
     private FloatingActionButton fab;
 
@@ -50,6 +55,16 @@ public class HomeActivity extends AppCompatActivity implements DialogCloseListen
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         tasksAdapter = new ToDoAdapter(this);
         recyclerView.setAdapter(tasksAdapter);
+
+        logOut = findViewById(R.id.logOut);
+
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+            }
+        });
 
         fab = findViewById(R.id.fab);
 

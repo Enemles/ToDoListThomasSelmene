@@ -7,6 +7,15 @@
     android:orientation="vertical"
     tools:context=".HomeActivity">
 
+    <ImageView
+        android:id="@+id/logOut"
+        android:layout_width="69dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|end"
+        android:layout_marginTop="20dp"
+        android:foregroundGravity="right"
+        app:srcCompat="@drawable/ic_baseline_logout_24" />
+
     <TextView
         android:id="@+id/registerTitle"
         android:layout_width="match_parent"
@@ -18,7 +27,7 @@
         android:layout_marginHorizontal="15dp"
         android:textAlignment="textStart"
         />
-    
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -41,6 +50,7 @@
             android:src="@drawable/ic_add"
             app:borderWidth="0dp"
             android:backgroundTint="#DDF42D"/>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </LinearLayout>
