@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     private long backPressedTime;
     private EditText loginEmail, loginPwd;
     private Button loginBtn;
-    private TextView loginRegister;
+    private TextView loginRegister, forgotPassword;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,15 @@ public class LoginActivity extends AppCompatActivity {
         loginPwd = findViewById(R.id.loginPassword);
         loginBtn = findViewById(R.id.loginButton);
         loginRegister = findViewById(R.id.loginRegister);
+        forgotPassword = findViewById(R.id.forgotPassword);
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, ForgotPassword.class);
+                startActivity(intent);
+            }
+        });
 
         loginRegister.setOnClickListener(new View.OnClickListener() {
             @Override
