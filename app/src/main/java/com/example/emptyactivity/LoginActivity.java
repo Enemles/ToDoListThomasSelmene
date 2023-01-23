@@ -24,7 +24,6 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginBtn;
     private TextView loginRegister, forgotPassword;
     private FirebaseAuth mAuth;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,22 +31,20 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         TextView textView = findViewById(R.id.loginTitle);
-        int unicode = 0x1F600;
+        int unicode = 0x1F601;
         String emoji = getEmoji(unicode);
-        textView.setText("Content de vous revoir " + emoji);
+        textView.setText("Content de vous revoir" + emoji);
 
         ProgressBar progressBar = findViewById(R.id.progressbar);
         progressBar.setVisibility(View.INVISIBLE);
 
         mAuth = FirebaseAuth.getInstance();
 
-        forgotPassword = (TextView) findViewById(R.id.forgotPassword);
-
         loginEmail = findViewById(R.id.loginEmail);
         loginPwd = findViewById(R.id.loginPassword);
         loginBtn = findViewById(R.id.loginButton);
         loginRegister = findViewById(R.id.loginRegister);
-        forgotPassword = (TextView) findViewById(R.id.forgotPassword);
+        forgotPassword = findViewById(R.id.forgotPassword);
 
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override

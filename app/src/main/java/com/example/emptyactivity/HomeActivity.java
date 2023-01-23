@@ -32,6 +32,8 @@ public class HomeActivity extends AppCompatActivity implements DialogCloseListen
     private List<ToDoModel> taskList;
     private ImageView logOut;
 
+    private ImageView logOut;
+
     private FloatingActionButton fab;
 
      private DatabaseHandler db;
@@ -67,6 +69,16 @@ public class HomeActivity extends AppCompatActivity implements DialogCloseListen
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         tasksAdapter = new ToDoAdapter(this);
         recyclerView.setAdapter(tasksAdapter);
+
+        logOut = findViewById(R.id.logOut);
+
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+            }
+        });
 
         fab = findViewById(R.id.fab);
 

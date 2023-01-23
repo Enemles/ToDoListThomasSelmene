@@ -87,6 +87,18 @@
         android:textColor="#606060"
 
         />
+    <TextView
+        android:id="@+id/forgotPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="J'ai oublié mon mot de passe"
+        android:textColor="#606060"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="25dp"
+        android:fontFamily="@font/syne_regular"
+
+        />
+
 
     <TextView
         android:id="@+id/forgotPassword"
