@@ -99,16 +99,4 @@
 
         />
 
-
-    <TextView
-        android:id="@+id/forgotPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:fontFamily="@font/syne_regular"
-        android:textColor="#606060"
-        android:text="J'ai oublié mon mot de passe."
-        />
-
-
 </LinearLayout>

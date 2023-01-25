@@ -1,5 +1,6 @@
 package com.example.emptyactivity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,27 +17,36 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.emptyactivity.Adapter.ToDoAdapter;
+import com.example.emptyactivity.Adapter.ToDoAdapterFB;
 import com.example.emptyactivity.Model.ToDoModel;
+import com.example.emptyactivity.Model.ToDoModelFB;
 import com.example.emptyactivity.Utils.DatabaseHandler;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity implements DialogCloseListener {
+public class HomeActivity extends AppCompatActivity {
     private long backPressedTime;
     private RecyclerView recyclerView;
-    private ToDoAdapter tasksAdapter;
-    private List<ToDoModel> taskList;
-    private ImageView logOut;
-
+    //private ToDoAdapter tasksAdapter;
+    //private List<ToDoModel> taskList;
     private ImageView logOut;
 
     private FloatingActionButton fab;
 
-     private DatabaseHandler db;
+     //private DatabaseHandler db;
+
+     private FirebaseFirestore firestore;
+     private ToDoAdapterFB adapterFB;
+     private List<ToDoModelFB> mList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +59,8 @@ public class HomeActivity extends AppCompatActivity implements DialogCloseListen
         String emoji = getEmoji(unicode);
         test.setText("Hello" + emoji);
 
-        db = new DatabaseHandler(this);
-        db.openDatabase();
+        //db = new DatabaseHandler(this);
+        //db.openDatabase();
 
         logOut = findViewById(R.id.logOut);
 
@@ -63,12 +73,12 @@ public class HomeActivity extends AppCompatActivity implements DialogCloseListen
             }
         });
 
-        taskList = new ArrayList<>();
+        //taskList = new ArrayList<>();
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        tasksAdapter = new ToDoAdapter(this);
-        recyclerView.setAdapter(tasksAdapter);
+        //tasksAdapter = new ToDoAdapter(this);
+        //recyclerView.setAdapter(tasksAdapter);
 
         logOut = findViewById(R.id.logOut);
 
@@ -81,10 +91,12 @@ public class HomeActivity extends AppCompatActivity implements DialogCloseListen
         });
 
         fab = findViewById(R.id.fab);
+        firestore = FirebaseFirestore.getInstance();
 
-        taskList = db.getAllTasks();
-        Collections.reverse(taskList);
-        tasksAdapter.setTasks(taskList);
+
+        //taskList = db.getAllTasks();
+        //Collections.reverse(taskList);
+        //tasksAdapter.setTasks(taskList);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +104,29 @@ public class HomeActivity extends AppCompatActivity implements DialogCloseListen
                 AddNewTask.newInstance().show(getSupportFragmentManager(), AddNewTask.TAG);
             }
         });
+        mList = new ArrayList<>();
+        adapterFB = new ToDoAdapterFB(HomeActivity.this, mList);
 
+        recyclerView.setAdapter(adapterFB);
+        showData();
+    }
+
+    private void showData(){
+        firestore.collection("task")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                for (DocumentChange documentChange : value.getDocumentChanges()){
+                    if (documentChange.getType() == DocumentChange.Type.ADDED){
+                        String id = documentChange.getDocument().getId();
+                        ToDoModelFB toDoModelFB = documentChange.getDocument().toObject(ToDoModelFB.class).withId(id);
+                        mList.add(toDoModelFB);
+                        adapterFB.notifyDataSetChanged();
+                    }
+                }
+                Collections.reverse(mList);
+            }
+        });
     }
 
 
@@ -112,11 +146,9 @@ public class HomeActivity extends AppCompatActivity implements DialogCloseListen
         backPressedTime = System.currentTimeMillis();
     }
 
-    @Override
-    public void handleDialogClose(DialogInterface dialog) {
-        taskList = db.getAllTasks();
-        Collections.reverse(taskList);
-        tasksAdapter.setTasks(taskList);
-        tasksAdapter.notifyDataSetChanged();
+    public void handleDialogClose(DialogInterface dialogInterface) {
+        mList.clear();
+        showData();
+        adapterFB.notifyDataSetChanged();
     }
 }

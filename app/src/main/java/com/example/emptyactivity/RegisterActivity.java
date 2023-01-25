@@ -93,6 +93,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
                                 finish();
                                 progressBar.setVisibility(View.INVISIBLE);
+                            } else {
                                 Toast.makeText(RegisterActivity.this, "Erreur !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.INVISIBLE);
                             }
