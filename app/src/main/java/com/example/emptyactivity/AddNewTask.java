@@ -143,12 +143,12 @@ public class AddNewTask  extends BottomSheetDialogFragment {
 
                 if (finalIsUpdate){
                     firestore.collection("task").document(id).update("task" , task , "due" , dueDate);
-                    Toast.makeText(context, "Task Updated", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Tache mise à jour", Toast.LENGTH_SHORT).show();
 
                 }
                 else {
                     if (task.isEmpty()) {
-                        Toast.makeText(context, "Empty task not Allowed !!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Une tâche ne peut être vide !!", Toast.LENGTH_SHORT).show();
                     } else {
 
                         Map<String, Object> taskMap = new HashMap<>();
@@ -162,7 +162,7 @@ public class AddNewTask  extends BottomSheetDialogFragment {
                             @Override
                             public void onComplete(@NonNull Task<DocumentReference> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(context, "Task Saved", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Tâche enregistrée", Toast.LENGTH_SHORT).show();
                                 } else {
                                     Toast.makeText(context, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }

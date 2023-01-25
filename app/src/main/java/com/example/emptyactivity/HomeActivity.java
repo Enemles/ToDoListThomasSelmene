@@ -3,6 +3,7 @@ package com.example.emptyactivity;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,13 +28,15 @@ import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements DialogCloseListener {
     private long backPressedTime;
     private RecyclerView recyclerView;
     //private ToDoAdapter tasksAdapter;
@@ -47,6 +50,8 @@ public class HomeActivity extends AppCompatActivity {
      private FirebaseFirestore firestore;
      private ToDoAdapterFB adapterFB;
      private List<ToDoModelFB> mList;
+     private Query query;
+     private ListenerRegistration listenerRegistration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,14 +111,18 @@ public class HomeActivity extends AppCompatActivity {
         });
         mList = new ArrayList<>();
         adapterFB = new ToDoAdapterFB(HomeActivity.this, mList);
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new TouchHelper(adapterFB));
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+        showData();
 
         recyclerView.setAdapter(adapterFB);
-        showData();
+
     }
 
     private void showData(){
-        firestore.collection("task")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+        query = firestore.collection("task").orderBy("time" , Query.Direction.DESCENDING);
+
+        listenerRegistration = query.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 for (DocumentChange documentChange : value.getDocumentChanges()){
@@ -124,7 +133,7 @@ public class HomeActivity extends AppCompatActivity {
                         adapterFB.notifyDataSetChanged();
                     }
                 }
-                Collections.reverse(mList);
+                listenerRegistration.remove();
             }
         });
     }
@@ -146,6 +155,7 @@ public class HomeActivity extends AppCompatActivity {
         backPressedTime = System.currentTimeMillis();
     }
 
+    @Override
     public void handleDialogClose(DialogInterface dialogInterface) {
         mList.clear();
         showData();

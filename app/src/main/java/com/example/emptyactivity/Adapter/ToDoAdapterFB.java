@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.emptyactivity.AddNewTask;
 import com.example.emptyactivity.HomeActivity;
 import com.example.emptyactivity.Model.ToDoModelFB;
 import com.example.emptyactivity.R;
@@ -50,7 +51,7 @@ public class ToDoAdapterFB extends RecyclerView.Adapter<ToDoAdapterFB.MyViewHold
         return activity;
     }
 
-    /* public void editTask(int position){
+    public void editTask(int position){
         ToDoModelFB toDoModel = todoList.get(position);
 
         Bundle bundle = new Bundle();
@@ -61,7 +62,7 @@ public class ToDoAdapterFB extends RecyclerView.Adapter<ToDoAdapterFB.MyViewHold
         AddNewTask addNewTask = new AddNewTask();
         addNewTask.setArguments(bundle);
         addNewTask.show(activity.getSupportFragmentManager() , addNewTask.getTag());
-    } */
+    }
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
