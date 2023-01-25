@@ -4,7 +4,7 @@ Liste des fonctionnalités implémentées :
 
 [ ] Utilisation de l'Api Preference
 
-[ ] Ecriture/lecture dans un Fichier
+[X] Ecriture/lecture dans un Fichier
 
 [X] Utilisation de SQLite
   Commentée dans le code et model sans "FB" à la fin
