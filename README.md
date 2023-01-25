@@ -7,10 +7,12 @@ Liste des fonctionnalités implémentées :
 [ ] Ecriture/lecture dans un Fichier
 
 [X] Utilisation de SQLite
+  Commentée dans le code et model sans "FB" à la fin
 
 [ ] Utilisation de Room
 
 [X] Utilisation de Firebase
+  Principale base de donnée utilisée, tout les fichiers models avec "FB" à la fin
 
 [X] Nombre d'activités ou fragment supérieur ou égal à 3
 
