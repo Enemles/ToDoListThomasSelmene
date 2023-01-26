@@ -43,7 +43,9 @@ public class HomeActivity extends AppCompatActivity implements DialogCloseListen
     //private List<ToDoModel> taskList;
     private ImageView logOut;
 
+
     private FloatingActionButton fab;
+    private FloatingActionButton fileOpen;
 
      //private DatabaseHandler db;
 
@@ -75,6 +77,16 @@ public class HomeActivity extends AppCompatActivity implements DialogCloseListen
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(HomeActivity.this, LoginActivity.class));
 
+            }
+        });
+
+        fileOpen = findViewById(R.id.fileOpen);
+
+        fileOpen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, FileInteraction.class);
+                startActivity(intent);
             }
         });
 

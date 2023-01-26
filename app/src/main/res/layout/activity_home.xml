@@ -51,6 +51,16 @@
             app:borderWidth="0dp"
             android:backgroundTint="#DDF42D"/>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fileOpen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_baseline_drive_file_move_24"
+            app:borderWidth="0dp"
+            android:backgroundTint="#DDF42D"/>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </LinearLayout>
