@@ -21,6 +21,7 @@ import java.io.FileOutputStream;
 public class FileInteraction extends AppCompatActivity {
     private ImageView logOut;
     private FloatingActionButton fab;
+    private FloatingActionButton share;
     Button write, read;
     TextView text;
     EditText input;
@@ -36,6 +37,16 @@ public class FileInteraction extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(FileInteraction.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        share = findViewById(R.id.shared);
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FileInteraction.this, SharedPreference.class);
                 startActivity(intent);
             }
         });
