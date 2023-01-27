@@ -31,6 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button registerBtn;
     private TextView registerLogin;
     private FirebaseAuth mAuth;
+    public static String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,13 +68,13 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = registerEmail.getText().toString().trim();
                 String pwd = registerPwd.getText().toString().trim();
-                String user = registerUsername.getText().toString().trim();
+                userName = registerUsername.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
                     registerEmail.setError("L'adresse mail est requise");
                     return;
                 }
-                if (TextUtils.isEmpty(user)) {
+                if (TextUtils.isEmpty(userName)) {
                     registerUsername.setError("Le nom d'utilisateur est requis");
                     return;
                 }

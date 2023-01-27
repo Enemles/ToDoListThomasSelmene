@@ -69,4 +69,13 @@
         android:src="@drawable/ic_add"
         app:borderWidth="0dp"
         android:backgroundTint="#DDF42D"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/shared"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_add"
+        app:borderWidth="0dp"
+        android:backgroundTint="#DDF42D"/>
 </LinearLayout>

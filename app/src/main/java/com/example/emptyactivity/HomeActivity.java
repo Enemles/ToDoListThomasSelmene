@@ -1,5 +1,6 @@
 package com.example.emptyactivity;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,8 +23,12 @@ import com.example.emptyactivity.Adapter.ToDoAdapterFB;
 import com.example.emptyactivity.Model.ToDoModel;
 import com.example.emptyactivity.Model.ToDoModelFB;
 import com.example.emptyactivity.Utils.DatabaseHandler;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -48,12 +53,14 @@ public class HomeActivity extends AppCompatActivity implements DialogCloseListen
     private FloatingActionButton fileOpen;
 
      //private DatabaseHandler db;
-
+     private FirebaseAuth mAuth;
      private FirebaseFirestore firestore;
      private ToDoAdapterFB adapterFB;
      private List<ToDoModelFB> mList;
      private Query query;
      private ListenerRegistration listenerRegistration;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +68,8 @@ public class HomeActivity extends AppCompatActivity implements DialogCloseListen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_home);
 
-        TextView test = findViewById(R.id.registerTitle);
-        int unicode = 0x1F44B;
-        String emoji = getEmoji(unicode);
-        test.setText("Hello" + emoji);
+        mAuth = FirebaseAuth.getInstance();
+
 
         //db = new DatabaseHandler(this);
         //db.openDatabase();
@@ -129,6 +134,20 @@ public class HomeActivity extends AppCompatActivity implements DialogCloseListen
 
         recyclerView.setAdapter(adapterFB);
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser == null) {
+            Log.d("TAG", "user not logged");
+        } else {
+            TextView message = findViewById(R.id.registerTitle);
+            int unicode = 0x1F44B;
+            String emoji = getEmoji(unicode);
+            message.setText("Hello" + " " + currentUser.getDisplayName() + " " + emoji);
+        }
     }
 
     private void showData(){
