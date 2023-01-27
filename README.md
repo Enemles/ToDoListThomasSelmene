@@ -1,15 +1,17 @@
 # ToDoListThomasSelmene
 
+Le Hello "null" est normal, je n'ai pas eu le temps de développer la partie authentification de l'utilisateur dans laquelle on récupère son pseudo. Ça marchait avec un certain compte mais maintenant ça ne marche plus...
+
 Liste des fonctionnalités implémentées :
 
-[ ] Utilisation de l'Api Preference
+[X] Utilisation de l'Api Preference
 
 [X] Ecriture/lecture dans un Fichier
 
 [X] Utilisation de SQLite
   Commentée dans le code et model sans "FB" à la fin
 
-[ ] Utilisation de Room
+[ ] Utilisation de Room 
 
 [X] Utilisation de Firebase
   Principale base de donnée utilisée, tout les fichiers models avec "FB" à la fin
@@ -22,7 +24,7 @@ Liste des fonctionnalités implémentées :
 
 [X] L'affichage d'une liste avec un custom adapter (avec gestion d’événement)
 
-[ ] La pertinence d'utilisation des layouts (L'application doit être responsive et supporter: portrait/paysage et tablette)
+[X] La pertinence d'utilisation des layouts (L'application doit être responsive et supporter: portrait/paysage et tablette)
 
 [X] L'utilisation de d’événement améliorant l'ux (pex: swipe). Préciser :
   Swipe pour supprimer ou modifier une tâche
